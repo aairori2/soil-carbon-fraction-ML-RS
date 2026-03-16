@@ -337,10 +337,48 @@
   .tl-month { font-size: 9px; color: #7a8c7e; margin-top: 5px; font-weight: 600; }
   .tl-task { font-size: 9px; color: #4a4a46; text-align: center; margin-top: 2px; line-height: 1.3; max-width: 70px; }
 
+  /* NAV LINK */
+  .nav-link-bar {
+    background: #f0ede6;
+    border-top: 1px solid #d4cfc4;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .nav-link-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #7a8c7e;
+  }
+  .nav-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #1e3a2e;
+    color: #9dc8b2;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border: 1px solid #2d5a42;
+    letter-spacing: 0.3px;
+    transition: background 0.2s;
+  }
+  .nav-link-btn:hover { background: #2d5a42; color: #f0f7f3; }
+  .nav-link-btn .arrow { color: #d4a843; font-size: 13px; }
+
   /* FOOTER */
   .footer {
     background: #1e3a2e;
-    padding: 10px 24px;
+    padding: 12px 24px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .footer-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -353,6 +391,14 @@
     color: #d4a843;
     font-weight: 600;
   }
+  .footer-copyright {
+    font-size: 9px;
+    color: #4a7a5e;
+    border-top: 1px solid #2d5a42;
+    padding-top: 6px;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
 </style>
 </head>
 <body>
@@ -361,8 +407,8 @@
   <!-- HEADER -->
   <div class="header">
     <div class="header-tag">Research Proposal · Remote Sensing × Soil Science × Machine Learning</div>
-    <h1>Predicting Soil Carbon Sequestration Under Regenerative Management Using Remote Sensing and Machine Learning by Aldi Airori</h1>
-    <div class="header-sub">Integrating 3-year in situ SOC fractions, GHG flux, and soil nitrogen data with Sentinel time series to project long-term carbon accumulation under cover crop × cattle grazing rotations in Nebraska.</div>
+    <h1>Predicting Soil Carbon Sequestration Under Regenerative Management Using Remote Sensing and Machine Learning</h1>
+    <div class="header-sub">Integrating 3-year in situ SOC fractions, GHG flux, and soil nitrogen data with Sentinel time series to project long-term carbon accumulation under cover crop × cattle grazing rotations.</div>
     <div class="header-meta">
       <div class="header-meta-item">
         <span class="val">3</span>
@@ -370,12 +416,12 @@
       </div>
       <div class="header-divider"></div>
       <div class="header-meta-item">
-        <span class="val">Nebraska: ENREEC</span>
+        <span class="val">Multi-state</span>
         <span class="lbl">Study area</span>
       </div>
       <div class="header-divider"></div>
       <div class="header-meta-item">
-        <span class="val">5+</span>
+        <span class="val">5+ params</span>
         <span class="lbl">Soil parameters</span>
       </div>
       <div class="header-divider"></div>
@@ -395,7 +441,7 @@
       <div class="card card-accent-amber">
         <div class="card-label">Research Gap</div>
         <h3>Why This Project Matters</h3>
-        <p>Current MRV protocols rely on process-based modeling, not measured SOC dynamics. There is no validated framework integrating SOC fractions, GHG flux, and remote sensing time series for long-term carbon projection under regenerative management.</p>
+        <p>Current MRV protocols rely on practice-based modeling, not measured SOC dynamics. There is no validated framework integrating SOC fractions, GHG flux, and RS time series for long-term carbon projection under regenerative management.</p>
       </div>
 
       <div class="card card-accent-green">
@@ -542,20 +588,24 @@
     </div>
 
   </div><!-- /body -->
- 
-<a href="reading_order.html" 
-   style="color:#1e3a2e; font-size:12px; text-decoration:underline;">
-  → View Supporting Literatures
-</a>
-</div>
- 
+
+  <!-- NAV LINK -->
+  <div class="nav-link-bar">
+    <div class="nav-link-label">Related</div>
+    <a href="reading_order.html" class="nav-link-btn">
+      <span class="arrow">→</span> View Supporting Literatures
+    </a>
+  </div>
+
   <!-- FOOTER -->
   <div class="footer">
-    <div class="footer-text">Environmental Science &amp; Remote Sensing · Soil Carbon Research Lab</div>
-    <div class="footer-tag">Carbon Sequestration · MRV · Remote Sensing · Machine Learning</div>
-   </div>
-    <div style="font-size:9px; color:#9dc8b2; letter-spacing:1px;">© Aldi Airori 2026</div>
+    <div class="footer-row">
+      <div class="footer-text">Environmental &amp; Remote Sensing Science · Soil Carbon Research Lab</div>
+      <div class="footer-tag">Carbon Sequestration · MRV · Remote Sensing · Machine Learning</div>
+    </div>
+    <div class="footer-copyright">© Aldi Airori 2026 — All rights reserved</div>
   </div>
+
 </div>
 </body>
 </html>
