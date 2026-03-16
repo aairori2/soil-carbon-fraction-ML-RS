@@ -111,23 +111,34 @@
     gap: 10px;
     margin-top: 2px;
   }
-  .tip {
-    background: #1e3a2e;
-    padding: 10px 12px;
-  }
+  .tip { background: #1e3a2e; padding: 10px 12px; }
   .tip-label { font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: #7fbf9a; margin-bottom: 4px; }
   .tip-text { font-size: 10px; color: #d4f0e0; line-height: 1.5; }
   .tip-text strong { color: #d4a843; }
 
+  /* FOOTER */
   .footer {
     background: #1e3a2e;
-    padding: 8px 20px;
+    padding: 12px 20px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .footer-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
   .ftxt { font-size: 9px; color: #7fbf9a; }
   .ftag { font-size: 8.5px; letter-spacing: 1.5px; text-transform: uppercase; color: #d4a843; font-weight: 600; }
+  .fcopy {
+    font-size: 9px;
+    color: #4a7a5e;
+    border-top: 1px solid #2d5a42;
+    padding-top: 6px;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
 </style>
 </head>
 <body>
@@ -135,7 +146,7 @@
 
   <div class="header">
     <div class="htag">Literature Review · Soil Carbon RS + ML Project</div>
-    <h1>Suggested Reading Order — Build Logic Layer by Layer</h1>
+    <h1>Recent &amp; Relevant Foundational Papers</h1>
     <div class="hsub">15 papers across 6 thematic layers · from theory → methods → field system → impact</div>
   </div>
 
@@ -200,7 +211,7 @@
       <div class="layer-meta">
         <div class="layer-num">03</div>
         <div class="layer-title">Comparable Methods</div>
-        <div class="layer-purpose">Papers closest to your actual pipeline</div>
+        <div class="layer-purpose">Papers closest to the actual pipeline</div>
       </div>
       <div class="papers">
         <div class="paper">
@@ -235,7 +246,7 @@
       <div class="layer-meta">
         <div class="layer-num">04</div>
         <div class="layer-title">Fraction-Level Prediction</div>
-        <div class="layer-purpose">Your novel angle — read these back to back</div>
+        <div class="layer-purpose">Novel angle — read these back to back</div>
       </div>
       <div class="papers">
         <div class="paper">
@@ -270,7 +281,7 @@
       <div class="layer-meta">
         <div class="layer-num">05</div>
         <div class="layer-title">Your Field System</div>
-        <div class="layer-purpose">Ground RS/ML theory in your experiment</div>
+        <div class="layer-purpose">Ground RS/ML theory in the experiment</div>
       </div>
       <div class="papers">
         <div class="paper">
@@ -313,7 +324,7 @@
       <div class="layer-meta">
         <div class="layer-num">06</div>
         <div class="layer-title">Carbon Market Impact</div>
-        <div class="layer-purpose">Connect your work to real-world MRV protocols</div>
+        <div class="layer-purpose">Connect the work to real-world MRV protocols</div>
       </div>
       <div class="papers">
         <div class="paper">
@@ -331,11 +342,11 @@
     <div class="tip-row">
       <div class="tip">
         <div class="tip-label">After Layer 4</div>
-        <div class="tip-text"> <strong>Draft Methods Section</strong> — write it before reading Layers 5 and 6.</div>
+        <div class="tip-text"><strong>Draft Methods Section</strong> — write it before reading Layers 5 and 6.</div>
       </div>
       <div class="tip">
         <div class="tip-label">After Layer 5</div>
-        <div class="tip-text"> <strong>Start Introduction</strong> — the gap is clear and system is grounded.</div>
+        <div class="tip-text"><strong>Start Introduction</strong> — the gap is clear and system is grounded.</div>
       </div>
       <div class="tip">
         <div class="tip-label">After Layer 6</div>
@@ -345,9 +356,13 @@
 
   </div>
 
+  <!-- FOOTER -->
   <div class="footer">
-    <div class="ftxt">Soil Carbon Sequestration Project · Literature Review Guide</div>
-    <div class="ftag">15 Papers · 6 Layers · 1 Logic</div>
+    <div class="footer-row">
+      <div class="ftxt">Soil Carbon Sequestration Project · Literature Review Guide</div>
+      <div class="ftag">15 Papers · 6 Layers · 1 Logic</div>
+    </div>
+    <div class="fcopy">© Aldi Airori 2026 — All rights reserved</div>
   </div>
 
 </div>
