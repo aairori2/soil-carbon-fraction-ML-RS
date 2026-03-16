@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading Order — Soil Carbon RS + ML Project</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    background: #f0ede6;
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+  }
+  .page { width: 800px; background: #f7f4ef; border: 1px solid #d4cfc4; }
+
+  .header {
+    background: #1e3a2e;
+    padding: 22px 28px 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 150px; height: 150px;
+    border-radius: 50%;
+    background: #2d5a42;
+    opacity: 0.45;
+  }
+  .htag { font-size: 9px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #7fbf9a; margin-bottom: 6px; }
+  .header h1 { font-family: Georgia, serif; font-size: 18px; color: #f0f7f3; line-height: 1.3; position: relative; z-index: 1; margin-bottom: 5px; }
+  .hsub { font-size: 11px; color: #9dc8b2; position: relative; z-index: 1; }
+
+  .body { padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; }
+
+  .layer {
+    display: grid;
+    grid-template-columns: 168px 1fr;
+    border: 1px solid #d8d3ca;
+    background: #fff;
+    overflow: hidden;
+  }
+  .layer-meta {
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+  }
+  .layer-num { font-size: 28px; font-weight: 700; font-family: Georgia, serif; line-height: 1; }
+  .layer-title { font-size: 11px; font-weight: 700; color: #1e3a2e; line-height: 1.3; margin-top: 2px; }
+  .layer-purpose { font-size: 9.5px; color: #7a8c7e; line-height: 1.4; margin-top: 3px; }
+
+  .l1 .layer-meta { background: #1e3a2e; border-right: none; }
+  .l1 .layer-num { color: #d4a843; }
+  .l1 .layer-title { color: #f0f7f3; }
+  .l1 .layer-purpose { color: #9dc8b2; }
+
+  .l2 .layer-meta { background: #f0ede6; border-right: 1px solid #d8d3ca; }
+  .l2 .layer-num { color: #3d6b8e; }
+
+  .l3 .layer-meta { background: #f0ede6; border-right: 1px solid #d8d3ca; }
+  .l3 .layer-num { color: #2d5a42; }
+
+  .l4 .layer-meta { background: #1e3a2e; border-right: none; }
+  .l4 .layer-num { color: #d4a843; }
+  .l4 .layer-title { color: #f0f7f3; }
+  .l4 .layer-purpose { color: #9dc8b2; }
+
+  .l5 .layer-meta { background: #f0ede6; border-right: 1px solid #d8d3ca; }
+  .l5 .layer-num { color: #8e3d3d; }
+
+  .l6 .layer-meta { background: #c17f24; border-right: none; }
+  .l6 .layer-num { color: #fff; }
+  .l6 .layer-title { color: #fff; }
+  .l6 .layer-purpose { color: #f5d9a8; }
+
+  .papers { padding: 10px 14px; display: flex; flex-direction: column; gap: 6px; justify-content: center; }
+
+  .paper {
+    display: grid;
+    grid-template-columns: 18px 1fr auto;
+    gap: 7px;
+    align-items: baseline;
+  }
+  .paper-num {
+    font-size: 9px;
+    font-weight: 700;
+    color: #c17f24;
+    font-family: Georgia, serif;
+    padding-top: 1px;
+  }
+  .paper-body { display: flex; flex-direction: column; gap: 1px; }
+  .paper-authors { font-size: 10.5px; font-weight: 700; color: #1e3a2e; }
+  .paper-note { font-size: 9.5px; color: #5a5a56; line-height: 1.35; }
+  .paper-doi {
+    font-size: 8.5px;
+    color: #3d6b8e;
+    font-family: monospace;
+    white-space: nowrap;
+    align-self: flex-start;
+    padding-top: 2px;
+  }
+
+  .tip-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 2px;
+  }
+  .tip {
+    background: #1e3a2e;
+    padding: 10px 12px;
+  }
+  .tip-label { font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: #7fbf9a; margin-bottom: 4px; }
+  .tip-text { font-size: 10px; color: #d4f0e0; line-height: 1.5; }
+  .tip-text strong { color: #d4a843; }
+
+  .footer {
+    background: #1e3a2e;
+    padding: 8px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .ftxt { font-size: 9px; color: #7fbf9a; }
+  .ftag { font-size: 8.5px; letter-spacing: 1.5px; text-transform: uppercase; color: #d4a843; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="htag">Literature Review · Soil Carbon RS + ML Project</div>
+    <h1>Suggested Reading Order — Build Logic Layer by Layer</h1>
+    <div class="hsub">15 papers across 6 thematic layers · from theory → methods → field system → impact</div>
+  </div>
+
+  <div class="body">
+
+    <!-- Layer 1 -->
+    <div class="layer l1">
+      <div class="layer-meta">
+        <div class="layer-num">01</div>
+        <div class="layer-title">Theoretical Foundation</div>
+        <div class="layer-purpose">Establish why fractions matter before everything else</div>
+      </div>
+      <div class="papers">
+        <div class="paper">
+          <div class="paper-num">1</div>
+          <div class="paper-body">
+            <div class="paper-authors">Lavallee et al. (2020)</div>
+            <div class="paper-note">The POM/MAOM framework — your theoretical anchor. All fraction work traces back here.</div>
+          </div>
+          <div class="paper-doi">10.1111/gcb.14859</div>
+        </div>
+        <div class="paper">
+          <div class="paper-num">2</div>
+          <div class="paper-body">
+            <div class="paper-authors">Shi et al. (2024)</div>
+            <div class="paper-note">Current SOC models fail at fraction level — justifies why your empirical data is needed.</div>
+          </div>
+          <div class="paper-doi">10.5194/gmd-17-5961-2024</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layer 2 -->
+    <div class="layer l2">
+      <div class="layer-meta">
+        <div class="layer-num">02</div>
+        <div class="layer-title">RS + ML Landscape</div>
+        <div class="layer-purpose">Bird's-eye view before diving into methods</div>
+      </div>
+      <div class="papers">
+        <div class="paper">
+          <div class="paper-num">3</div>
+          <div class="paper-body">
+            <div class="paper-authors">Wang et al. (2024)</div>
+            <div class="paper-note">Bibliometric review of 1,761 papers. Confirms the gap: dynamic temporal predictions are missing.</div>
+          </div>
+          <div class="paper-doi">10.1007/s11368-024-03913-8</div>
+        </div>
+        <div class="paper">
+          <div class="paper-num">4</div>
+          <div class="paper-body">
+            <div class="paper-authors">Khaled et al. (2024)</div>
+            <div class="paper-note">Comprehensive review of RS, ML, DL, and hybrid approaches. Use as a technique menu.</div>
+          </div>
+          <div class="paper-doi">10.3390/rs16010001</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layer 3 -->
+    <div class="layer l3">
+      <div class="layer-meta">
+        <div class="layer-num">03</div>
+        <div class="layer-title">Comparable Methods</div>
+        <div class="layer-purpose">Papers closest to your actual pipeline</div>
+      </div>
+      <div class="papers">
+        <div class="paper">
+          <div class="paper-num">5</div>
+          <div class="paper-body">
+            <div class="paper-authors">Ge et al. (2025)</div>
+            <div class="paper-note">US ag land + multi-temporal Sentinel-2. Closest geographic match — study their feature engineering.</div>
+          </div>
+          <div class="paper-doi">10.1016/j.geodrs.2025.e00920</div>
+        </div>
+        <div class="paper">
+          <div class="paper-num">6</div>
+          <div class="paper-body">
+            <div class="paper-authors">Gholizadeh et al. (2023)</div>
+            <div class="paper-note">Sentinel-1 + Sentinel-2 + Vis-NIR fusion. Key for combining SAR and optical in your pipeline.</div>
+          </div>
+          <div class="paper-doi">10.3390/rs15174264</div>
+        </div>
+        <div class="paper">
+          <div class="paper-num">7</div>
+          <div class="paper-body">
+            <div class="paper-authors">Azizi et al. (2025)</div>
+            <div class="paper-note">XGBoost + Sentinel-1/2, R²=0.91. Your benchmark model — replicate then improve with fractions.</div>
+          </div>
+          <div class="paper-doi">10.1016/j.atech.2025.101036</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layer 4 -->
+    <div class="layer l4">
+      <div class="layer-meta">
+        <div class="layer-num">04</div>
+        <div class="layer-title">Fraction-Level Prediction</div>
+        <div class="layer-purpose">Your novel angle — read these back to back</div>
+      </div>
+      <div class="papers">
+        <div class="paper">
+          <div class="paper-num">8</div>
+          <div class="paper-body">
+            <div class="paper-authors">Angst et al. (2022)</div>
+            <div class="paper-note">ML mapping of POM + MAOM separately across 352 topsoils. Closest precedent for your projection approach.</div>
+          </div>
+          <div class="paper-doi">10.1038/s41561-021-00744-x</div>
+        </div>
+        <div class="paper">
+          <div class="paper-num">9</div>
+          <div class="paper-body">
+            <div class="paper-authors">Ruiz et al. (2024)</div>
+            <div class="paper-note">RF on POM/MAOM at subfield scale, US cropland. Read right after Angst — same logic, your scale.</div>
+          </div>
+          <div class="paper-doi">10.5194/soil-10-307-2024</div>
+        </div>
+        <div class="paper">
+          <div class="paper-num">10</div>
+          <div class="paper-body">
+            <div class="paper-authors">Viscarra Rossel et al. (2024)</div>
+            <div class="paper-note">Spectral prediction of POM, MAOM, and microbial biomass jointly — all three datasets you have.</div>
+          </div>
+          <div class="paper-doi">10.1016/j.scitotenv.2024.174812</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layer 5 -->
+    <div class="layer l5">
+      <div class="layer-meta">
+        <div class="layer-num">05</div>
+        <div class="layer-title">Your Field System</div>
+        <div class="layer-purpose">Ground RS/ML theory in your experiment</div>
+      </div>
+      <div class="papers">
+        <div class="paper">
+          <div class="paper-num">11</div>
+          <div class="paper-body">
+            <div class="paper-authors">Joshi et al. (2023)</div>
+            <div class="paper-note">Cover crops + SOC meta-analysis. Use for expected effect sizes to sanity-check model outputs.</div>
+          </div>
+          <div class="paper-doi">10.1002/agj2.21309</div>
+        </div>
+        <div class="paper">
+          <div class="paper-num">12</div>
+          <div class="paper-body">
+            <div class="paper-authors">Poeplau &amp; Don (2024)</div>
+            <div class="paper-note">Full GHG budget of cover cropping. Frames your N₂O and CH₄ data in a climate mitigation context.</div>
+          </div>
+          <div class="paper-doi">10.1371/journal.pone.0302139</div>
+        </div>
+        <div class="paper">
+          <div class="paper-num">13</div>
+          <div class="paper-body">
+            <div class="paper-authors">Zhao et al. (2025)</div>
+            <div class="paper-note">GHG under conservation tillage + cover crops. Compare their flux magnitudes to your measurements.</div>
+          </div>
+          <div class="paper-doi">10.1080/09064710.2025.2515024</div>
+        </div>
+        <div class="paper">
+          <div class="paper-num">14</div>
+          <div class="paper-body">
+            <div class="paper-authors">Tian et al. (2024)</div>
+            <div class="paper-note">GHG methods review. Grounds your chamber measurement approach in the broader literature.</div>
+          </div>
+          <div class="paper-doi">10.3390/su16114789</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layer 6 -->
+    <div class="layer l6">
+      <div class="layer-meta">
+        <div class="layer-num">06</div>
+        <div class="layer-title">Carbon Market Impact</div>
+        <div class="layer-purpose">Connect your work to real-world MRV protocols</div>
+      </div>
+      <div class="papers">
+        <div class="paper">
+          <div class="paper-num">15</div>
+          <div class="paper-body">
+            <div class="paper-authors">Nocita et al. (2023)</div>
+            <div class="paper-note">RS + ML + MIR for carbon credit assessment. Closes the loop between your methods and protocol design — key for your Discussion.</div>
+          </div>
+          <div class="paper-doi">10.3390/rs15235571</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tips -->
+    <div class="tip-row">
+      <div class="tip">
+        <div class="tip-label">After Layer 4</div>
+        <div class="tip-text">You have enough to <strong>draft your Methods section</strong> — write it before reading Layers 5 and 6.</div>
+      </div>
+      <div class="tip">
+        <div class="tip-label">After Layer 5</div>
+        <div class="tip-text">You can <strong>start your Introduction</strong> — the gap is clear and your system is grounded.</div>
+      </div>
+      <div class="tip">
+        <div class="tip-label">After Layer 6</div>
+        <div class="tip-text">Write your <strong>Discussion and Conclusion</strong> — now you can speak to real-world carbon market impact.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="ftxt">Soil Carbon Sequestration Project · Literature Review Guide</div>
+    <div class="ftag">15 Papers · 6 Layers · 1 Logic</div>
+  </div>
+
+</div>
+</body>
+</html>
