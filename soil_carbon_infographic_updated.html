@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soil Carbon Sequestration — Project Infographic</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; background: #f0ede6; color: #1a1a18; min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: 24px; }
+  .page { width: 800px; background: #f7f4ef; border: 1px solid #d4cfc4; }
+  .header { background: #1e3a2e; padding: 32px 36px 28px; position: relative; overflow: hidden; }
+  .header::before { content: ''; position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; border-radius: 50%; background: #2d5a42; opacity: 0.5; }
+  .header::after { content: ''; position: absolute; bottom: -60px; left: 20%; width: 240px; height: 120px; border-radius: 50%; background: #2d5a42; opacity: 0.3; }
+  .header-tag { font-size: 10px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: #7fbf9a; margin-bottom: 10px; }
+  .header h1 { font-family: Georgia, 'Times New Roman', serif; font-size: 26px; font-weight: 700; color: #f0f7f3; line-height: 1.25; max-width: 560px; margin-bottom: 10px; position: relative; z-index: 1; }
+  .header-sub { font-size: 13px; color: #9dc8b2; position: relative; z-index: 1; max-width: 480px; line-height: 1.5; }
+  .header-meta { display: flex; gap: 24px; margin-top: 18px; position: relative; z-index: 1; }
+  .header-meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .header-meta-item .val { font-size: 20px; font-weight: 700; color: #d4a843; font-family: Georgia, serif; }
+  .header-meta-item .lbl { font-size: 10px; color: #7fbf9a; letter-spacing: 1px; text-transform: uppercase; }
+  .header-divider { width: 1px; background: #2d5a42; align-self: stretch; }
+  .body { padding: 24px 24px 20px; display: flex; flex-direction: column; gap: 16px; }
+  .row-3col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .card { background: #ffffff; border: 1px solid #d8d3ca; padding: 16px 18px; }
+  .card-accent-green { border-top: 3px solid #2d5a42; }
+  .card-accent-amber { border-top: 3px solid #c17f24; }
+  .card-accent-blue  { border-top: 3px solid #3d6b8e; }
+  .card-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #7a8c7e; margin-bottom: 6px; }
+  .card h3 { font-family: Georgia, serif; font-size: 14px; font-weight: 700; color: #1e3a2e; margin-bottom: 8px; line-height: 1.3; }
+  .card p { font-size: 12px; color: #4a4a46; line-height: 1.6; }
+  .param-list { list-style: none; display: flex; flex-direction: column; gap: 5px; margin-top: 6px; }
+  .param-list li { font-size: 11.5px; color: #3a3a36; display: flex; align-items: flex-start; gap: 7px; line-height: 1.4; }
+  .param-list li::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #c17f24; margin-top: 4px; flex-shrink: 0; }
+  .method-flow { display: flex; align-items: center; gap: 0; margin-top: 10px; }
+  .method-step { flex: 1; background: #f0ede6; border: 1px solid #d4cfc4; padding: 10px 8px; text-align: center; position: relative; }
+  .method-step-title { font-size: 10px; font-weight: 700; color: #1e3a2e; letter-spacing: 0.5px; margin-bottom: 3px; }
+  .method-step-sub { font-size: 9.5px; color: #6a6a66; line-height: 1.3; }
+  .method-arrow { font-size: 14px; color: #c17f24; flex-shrink: 0; padding: 0 2px; font-weight: 700; }
+  .method-step.highlight { background: #1e3a2e; border-color: #1e3a2e; }
+  .method-step.highlight .method-step-title { color: #f0f7f3; }
+  .method-step.highlight .method-step-sub { color: #9dc8b2; }
+  .sensor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 8px; }
+  .sensor-tag { background: #f0ede6; border: 1px solid #d4cfc4; padding: 5px 8px; font-size: 10px; font-weight: 600; color: #2d5a42; text-align: center; }
+  .output-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .output-card { background: #1e3a2e; padding: 16px 18px; position: relative; overflow: hidden; }
+  .output-card::after { content: ''; position: absolute; bottom: -20px; right: -20px; width: 80px; height: 80px; border-radius: 50%; background: #2d5a42; opacity: 0.5; }
+  .output-card-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: #7fbf9a; margin-bottom: 5px; }
+  .output-card h3 { font-family: Georgia, serif; font-size: 14px; color: #f0f7f3; margin-bottom: 7px; position: relative; z-index: 1; }
+  .output-card ul { list-style: none; display: flex; flex-direction: column; gap: 4px; position: relative; z-index: 1; }
+  .output-card ul li { font-size: 11px; color: #9dc8b2; padding-left: 12px; position: relative; line-height: 1.4; }
+  .output-card ul li::before { content: '→'; position: absolute; left: 0; color: #d4a843; font-size: 10px; }
+  .journal-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+  .journal-tag { background: #f0ede6; border: 1px solid #d4cfc4; padding: 4px 10px; font-size: 10px; color: #3d6b8e; font-weight: 600; }
+  .timeline-section { background: #f0ede6; border: 1px solid #d8d3ca; padding: 14px 18px; }
+  .timeline-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #7a8c7e; margin-bottom: 10px; }
+  .timeline-track { display: flex; align-items: stretch; gap: 0; }
+  .tl-item { flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; }
+  .tl-item::before { content: ''; position: absolute; top: 8px; left: 50%; right: -50%; height: 2px; background: #c8c3ba; z-index: 0; }
+  .tl-item:last-child::before { display: none; }
+  .tl-dot { width: 16px; height: 16px; border-radius: 50%; background: #7a9e8a; border: 2px solid #f0ede6; position: relative; z-index: 1; flex-shrink: 0; }
+  .tl-item.active .tl-dot { background: #c17f24; }
+  .tl-month { font-size: 9px; color: #7a8c7e; margin-top: 5px; font-weight: 600; }
+  .tl-task { font-size: 9px; color: #4a4a46; text-align: center; margin-top: 2px; line-height: 1.3; max-width: 70px; }
+  .nav-link-bar { background: #f0ede6; border-top: 1px solid #d4cfc4; padding: 12px 24px; display: flex; align-items: center; gap: 12px; }
+  .nav-link-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #7a8c7e; }
+  .nav-link-btn { display: inline-flex; align-items: center; gap: 7px; background: #1e3a2e; color: #9dc8b2; text-decoration: none; font-size: 11px; font-weight: 600; padding: 7px 14px; border: 1px solid #2d5a42; letter-spacing: 0.3px; transition: background 0.2s; }
+  .nav-link-btn:hover { background: #2d5a42; color: #f0f7f3; }
+  .nav-link-btn .arrow { color: #d4a843; font-size: 13px; }
+  .footer { background: #1e3a2e; padding: 12px 24px 8px; display: flex; flex-direction: column; gap: 6px; }
+  .footer-row { display: flex; justify-content: space-between; align-items: center; }
+  .footer-text { font-size: 10px; color: #7fbf9a; }
+  .footer-tag { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: #d4a843; font-weight: 600; }
+  .footer-copyright { font-size: 9px; color: #4a7a5e; border-top: 1px solid #2d5a42; padding-top: 6px; text-align: center; letter-spacing: 0.5px; }
+  .map-callout { margin-top: 10px; padding: 9px 10px; background: #f7f4ef; border-left: 3px solid #3d6b8e; }
+  .map-callout p { font-size: 11px; color: #4a4a46; line-height: 1.45; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-tag">Research Proposal · Remote Sensing × Soil Science × Machine Learning</div>
+    <h1>Predicting Soil Carbon Sequestration Under Regenerative Management Using Remote Sensing and Machine Learning by Aldi Airori</h1>
+    <div class="header-sub">Integrating 3-year in situ SOC fractions, GHG flux, and soil nitrogen data with Sentinel time series to project long-term carbon accumulation under cover crop × cattle grazing rotations in Nebraska.</div>
+    <div class="header-meta">
+      <div class="header-meta-item"><span class="val">3</span><span class="lbl">Years of field data</span></div>
+      <div class="header-divider"></div>
+      <div class="header-meta-item"><span class="val">Nebraska ENREEC</span><span class="lbl">Study area</span></div>
+      <div class="header-divider"></div>
+      <div class="header-meta-item"><span class="val">5+ </span><span class="lbl">Soil parameters</span></div>
+      <div class="header-divider"></div>
+      <div class="header-meta-item"><span class="val">20 yr</span><span class="lbl">Projection horizon</span></div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="row-3col">
+      <div class="card card-accent-amber">
+        <div class="card-label">Research Gap</div>
+        <h3>Why This Project Matters</h3>
+        <p>Current MRV protocols rely on process-based modeling, not measured SOC dynamics. There is no validated framework integrating SOC fractions, GHG flux, and RS time series for long-term carbon projection under regenerative management.</p>
+      </div>
+      <div class="card card-accent-green">
+        <div class="card-label">In Situ Data Assets · 3 Years</div>
+        <h3>Field Measurements</h3>
+        <ul class="param-list">
+          <li>SOC fractions (POM &amp; MAOM)</li>
+          <li>GHG flux — CO₂, N₂O, CH₄</li>
+          <li>Total nitrogen &amp; mineral N</li>
+          <li>Soil microbial biomass C &amp; N</li>
+          <li>Bulk density, pH, texture, EC</li>
+          <li>Cover crop biomass &amp; grazing records</li>
+        </ul>
+      </div>
+      <div class="card card-accent-blue">
+        <div class="card-label">Remote Sensing Inputs</div>
+        <h3>Satellite Covariates</h3>
+        <div class="sensor-grid">
+          <div class="sensor-tag">Sentinel-2 MSI</div>
+          <div class="sensor-tag">Sentinel-1 SAR</div>
+          <div class="sensor-tag">NAIP RGB+NIR</div>
+          <div class="sensor-tag">ERA5 Climate</div>
+        </div>
+        <ul class="param-list" style="margin-top:10px">
+          <li>Sentinel-2 time series for bare-soil reflectance and phenology</li>
+          <li>Sentinel-1 backscatter for moisture and tillage effects</li>
+          <li>NAIP for treatment zones, residue, and within-field variability</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card card-accent-green" style="padding:16px 18px">
+      <div class="card-label">Methodology</div>
+      <h3 style="margin-bottom:10px">RS + ML Data Fusion Pipeline</h3>
+      <div class="method-flow">
+        <div class="method-step"><div class="method-step-title">In Situ Data</div><div class="method-step-sub">SOC fractions · GHG · N · Microbial</div></div>
+        <div class="method-arrow">›</div>
+        <div class="method-step"><div class="method-step-title">RS Proxy Signals</div><div class="method-step-sub">Bare soil reflectance · NDVI · SAR moisture · residue cover</div></div>
+        <div class="method-arrow">›</div>
+        <div class="method-step highlight"><div class="method-step-title">ML Model</div><div class="method-step-sub">RF · XGBoost · GPR · temporal models</div></div>
+        <div class="method-arrow">›</div>
+        <div class="method-step"><div class="method-step-title">Calibration</div><div class="method-step-sub">Fraction-level validation · time-aware splits</div></div>
+        <div class="method-arrow">›</div>
+        <div class="method-step"><div class="method-step-title">Projection</div><div class="method-step-sub">5 · 10 · 20 yr scenarios + uncertainty bounds</div></div>
+      </div>
+      <div style="margin-top:10px; padding:8px 10px; background:#f7f4ef; border-left:3px solid #c17f24">
+        <p style="font-size:11px; color:#4a4a46; line-height:1.5"><strong style="color:#1e3a2e">Expanded logic:</strong> Remote sensing is used as a proxy for surface conditions rather than a direct measure of SOC fractions. Sentinel-2 captures temporal changes in bare-soil reflectance and vegetation cover, Sentinel-1 provides moisture-sensitive backscatter, and NAIP adds high-resolution spatial context for treatment zones and within-field variability. These predictors are matched to in situ POM and MAOM measurements collected on the same or nearest sampling dates so the model can learn how surface signals relate to fraction dynamics over time.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card-label" style="margin-bottom:8px; font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#7a8c7e">Expected Outputs</div>
+      <div class="output-cards">
+        <div class="output-card">
+          <div class="output-card-label">Output 1 · Interactive Map</div>
+          <h3>GitHub Pages Visualization</h3>
+          <ul>
+            <li>Animated SOC change layers (year-by-year)</li>
+            <li>Hover tooltips for plot ID, date, and fraction values</li>
+            <li>Layer toggles for Sentinel-2, Sentinel-1, NAIP, and treatment zones</li>
+            <li>Compare observed vs predicted SOC surfaces</li>
+            <li>Built with Folium → hosted as HTML</li>
+          </ul>
+        </div>
+        <div class="output-card">
+          <div class="output-card-label">Output 2 · Research Article</div>
+          <h3>Full Research Paper (6–8k words)</h3>
+          <ul>
+            <li>RS + ML fusion methodology with multi-sensor proxy design</li>
+            <li>SOC fraction-level predictions vs bulk SOC</li>
+            <li>Sentinel-2, Sentinel-1, and NAIP feature integration</li>
+            <li>Long-term carbon accumulation projections</li>
+            <li>Implications for MRV protocol design</li>
+          </ul>
+          <div class="journal-row">
+            <div class="journal-tag" style="background:#163020; border-color:#2d5a42; color:#9dc8b2">Geoderma</div>
+            <div class="journal-tag" style="background:#163020; border-color:#2d5a42; color:#9dc8b2">SOIL</div>
+            <div class="journal-tag" style="background:#163020; border-color:#2d5a42; color:#9dc8b2">AEE</div>
+            <div class="journal-tag" style="background:#163020; border-color:#2d5a42; color:#9dc8b2">RSE</div>
+          </div>
+        </div>
+        <div class="output-card">
+          <div class="output-card-label">Output 3 · Web Map</div>
+          <h3>Interactive SOC Portal</h3>
+          <ul>
+            <li>Static HTML map for GitHub Pages</li>
+            <li>Map legend for observed and predicted SOC</li>
+            <li>Sampling locations and treatment boundaries</li>
+            <li>Downloadable map snapshots for publication figures</li>
+          </ul>
+        </div>
+      </div>
+      <div class="map-callout">
+        <p><strong style="color:#1e3a2e">Implementation note:</strong> Generate the SOC map in Folium, save it as HTML, and link it from the infographic so readers can open the interactive version in a browser.</p>
+      </div>
+    </div>
+    <div class="timeline-section">
+      <div class="timeline-label">Project Timeline · 8 Months</div>
+      <div class="timeline-track">
+        <div class="tl-item active"><div class="tl-dot"></div><div class="tl-month">Mo 1–2</div><div class="tl-task">GEE RS extraction &amp; temporal alignment</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-month">Mo 2–3</div><div class="tl-task">Exploratory analysis &amp; feature engineering</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-month">Mo 3–4</div><div class="tl-task">ML model training &amp; validation</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-month">Mo 4–5</div><div class="tl-task">Projection scenarios &amp; uncertainty</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-month">Mo 5–6</div><div class="tl-task">Folium map build &amp; GitHub deployment</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-month">Mo 6–7</div><div class="tl-task">Paper writing &amp; figure prep</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-month">Mo 7–8</div><div class="tl-task">Review &amp; journal submission</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-link-bar">
+    <div class="nav-link-label">Related</div>
+    <a href="reading_order.html" class="nav-link-btn"><span class="arrow">→</span> View Supporting Literatures</a>
+  </div>
+  <div class="footer">
+    <div class="footer-row">
+      <div class="footer-text">Environmental &amp; Remote Sensing Science · Soil Carbon Research Lab</div>
+      <div class="footer-tag">Carbon Sequestration · MRV · Remote Sensing · Machine Learning</div>
+    </div>
+    <div class="footer-copyright">© Aldi Airori 2026 — All rights reserved</div>
+  </div>
+</div>
+</body>
+</html>
